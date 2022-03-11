@@ -7,8 +7,8 @@ import defaultImg from "../../image/img_profile_defalt @2x.png";
 
 const ChatRoomItem = (props) => {
   const chatInfo = props;
-  console.log(chatInfo);
-  const currentRoomId = useSelector((state) => state.chat.currentChat.roomId);
+  // console.log(chatInfo.roomId);
+  // const currentRoomId = useSelector((state) => state.chat.currentChat.roomId);
 
   // 타임 스탬프
   let time = "";
@@ -23,7 +23,7 @@ const ChatRoomItem = (props) => {
       is_flex
       style={{ alignItems: "flex-start", cursor: "pointer" }}
       _onClick={() => {
-        history.push(`/chatting/${chatInfo.id}`);
+        history.push(`/chatting/${chatInfo.roomId}`);
       }}
     >
       <div style={{ width: "calc(100% - 78px)", display: "flex" }}>

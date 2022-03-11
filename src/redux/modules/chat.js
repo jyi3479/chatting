@@ -69,6 +69,8 @@ const initialState = {
   loading: false,
   // 사용자가 설정한 카테고리(채팅방 생성시)
   selectedCategory: [],
+  // 메세지 하나 추가되면 true
+  editDone: false,
 };
 
 //채팅방 생성
@@ -135,6 +137,7 @@ export default handleActions(
       produce(state, (draft) => {
         draft.messages.push(action.payload.messages);
         // state.loading = true;
+        draft.editDone = true;
       }),
 
     [WRITE_MESSAGE]: (state, action) =>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as baseAction from "../redux/modules/base";
 
 // Components
@@ -49,7 +49,7 @@ const ChatRoom = (props) => {
     dispatch(
       baseAction.setHeader(
         currentChat.roomName,
-        true,
+        false,
         currentChat.currentMember
       )
     );
@@ -66,7 +66,7 @@ const ChatRoom = (props) => {
     return () => {
       wsDisConnectUnsubscribe();
     };
-  }, [roomId]);
+  }, []);
 
   // 웹소켓 연결, 구독
   function wsConnectSubscribe() {
@@ -140,7 +140,7 @@ const ChatRoom = (props) => {
       const data = {
         type: "TALK",
         userId: 10,
-        roomId: "18", //string roomId를 줘야 함..
+        roomId: roomId, //string roomId를 줘야 함..
         // sender: sender,
         message: messageText,
       };
@@ -172,11 +172,11 @@ const ChatRoom = (props) => {
       padding="24px 20px"
       margin="48px 0 0"
       bg="#f7f7f7"
-      // height="100vh"
       height="calc(100vh - 48px)"
       style={{ overflowY: "scroll" }}
+      // style={{ overflowY: "hidden" }}
     >
-      <button onClick={wsDisConnectUnsubscribe}>채팅 종료</button>
+      {/* <button onClick={wsDisConnectUnsubscribe}>채팅 종료</button> */}
       <Grid padding="0" margin="0 0 76px">
         <MessageList />
       </Grid>

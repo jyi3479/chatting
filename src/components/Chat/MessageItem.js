@@ -28,7 +28,7 @@ function MessageItem(props) {
   if (message.type === "ENTER") {
     return <EnterWrap>{message.message}</EnterWrap>;
   }
-  // 메시지의 유저 id 정보와 현재 유저 id가 같으면 본인 메시지
+  // 메시지의 유저 id 정보와 현재 유저 id가 같으면 본인 메시지 (user store에 저장되어있는거 쓰기 or localstorage)
   if (10 === +message.user.userId) {
     return (
       <Item className="is_me">
@@ -53,7 +53,7 @@ function MessageItem(props) {
         <Item>
           <Image></Image>
           <Bubble>
-            <p> {message.user ? message.user.username : message.sender}</p>
+            <p> {message.user ? message.user.nickname : message.sender}</p>
             <div>
               <Text>{message.message}</Text>
               <p className="time">{time}</p>
